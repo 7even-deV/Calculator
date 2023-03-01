@@ -9,3 +9,5 @@
 - Crar una clase principal ejecutadora del programa en si, un modelo de la estructura de calculadora, una interfaz e implementación sobre la que interactuará con el tracer y el repositorio JPA para la posterior gestión de operaciones registradas, y un controlador que estará escuchando las consultas de suma y resta por sus respectivos end-point.
 
 - Agregar en el application.properties persistencia de datos utilizando H2 como gestor de pruebas, "lo dejé en (create-drop)".
+
+- Implementar nuevas consultas básicas de CRUD para sacar mayor provecho al proyecto. También un paquete para errores personalizados.

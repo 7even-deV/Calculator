@@ -2,10 +2,12 @@ package com.bosonit.calculator.application;
 
 import com.bosonit.calculator.domain.CalculatorDomain;
 import com.bosonit.calculator.infrastructure.repository.CalculatorRepository;
+import com.bosonit.exception.NotFoundException;
 import io.corp.calculator.TracerImpl;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class CalculatorServiceImpl implements ICalculatorService{
@@ -18,6 +20,7 @@ public class CalculatorServiceImpl implements ICalculatorService{
         this.repository = cRepository;
         tracerAPI = new TracerImpl();
     }
+
     @Override
     public CalculatorDomain additionOperation(BigDecimal firstParameter, BigDecimal secondParameter){
 
@@ -44,5 +47,21 @@ public class CalculatorServiceImpl implements ICalculatorService{
         calculator.setResult(result);
 
         return repository.save(calculator);
+    }
+
+    @Override
+    public List<CalculatorDomain> getResults() {
+        return repository.findAll();
+    }
+
+    @Override
+    public CalculatorDomain getResultId(Long id) throws NotFoundException {
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("No result found with id: " + id));
+    }
+
+    @Override
+    public void deleteResult(Long id) {
+        CalculatorDomain calculator = repository.findById(id).orElseThrow(() -> new NotFoundException("No result found with id: " + id));
+        repository.delete(calculator);
     }
 }
