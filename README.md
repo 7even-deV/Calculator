@@ -13,3 +13,5 @@
 - Implementar nuevas consultas básicas de CRUD para sacar mayor provecho al proyecto. También un paquete para errores personalizados.
 
 - Asignar al puerto 8087 evitando estar utilizándose. Más guardar en la carpeta __.run__ las ejecuciones de Maven para el empaquetado del proyecto a _.jar_ y el Run para el despliegue local desde el IDE.
+
+- Pasar los tests unitarios utilizando JUnit y la librería Mockito.
